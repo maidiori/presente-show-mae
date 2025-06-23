@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <title>Um Segredo Para Você</title>
+    <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+    <div class="container">
+
+        <!-- Etapa 1 -->
+        <div id="etapa1">
+            <h1>Nem todas as histórias precisam ser contadas de uma vez só...</h1>
+            <button onclick="irParaEtapa2()">Continuar</button>
+        </div>
+
+        <!-- Etapa 2 -->
+        <div id="etapa2" class="hidden">
+            <p>Tem coisas que só a gente entende...<br>
+            Músicas, risadas, cafés da tarde...<br>
+            Momentos que marcaram.</p>
+            <button onclick="irParaEtapa3()">Quero saber mais</button>
+        </div>
+
+        <!-- Etapa 3 -->
+        <div id="etapa3" class="hidden">
+            <p>Prepare-se para reviver algo que sempre fez parte da nossa história...<br>
+            E dessa vez, ao vivo.</p>
+            <button onclick="mostrarSurpresa()">Revelar o Presente</button>
+        </div>
+
+        <!-- Etapa 4 - Surpresa -->
+        <div id="surpresa" class="hidden" style="margin-top: 30px;">
+            <h2>Você vai ao show do Nenhum de Nós comigo! 🎶✨</h2>
+            <p>Data: 16/08/2025</p>
+            <p>Local: TEATRO CRICIÚMA ELIAS ANGELONI, Criciúma/ SC</p>
+            <p>Prepare-se para uma noite inesquecível!</p>
+        </div>
+    </div>
+
+    <audio id="musica" autoplay loop>
+        <source src="musica.mp3" type="audio/mpeg" />
+        Seu navegador não suporta áudio.
+    </audio>
+
+    <script>
+        function irParaEtapa2() {
+            document.getElementById('etapa1').classList.add('hidden');
+            document.getElementById('etapa2').classList.remove('hidden');
+            tocarMusica();
+        }
+
+        function irParaEtapa3() {
+            document.getElementById('etapa2').classList.add('hidden');
+            document.getElementById('etapa3').classList.remove('hidden');
+            tocarMusica();
+        }
+
+        function mostrarSurpresa() {
+            document.getElementById('etapa3').classList.add('hidden');
+            document.getElementById('surpresa').classList.remove('hidden');
+            tocarMusica();
+        }
+
+        function tocarMusica() {
+            const audio = document.getElementById('musica');
+            if (audio.paused) {
+                audio.play();
+            }
+        }
+    </script>
+</body>
+</html>
