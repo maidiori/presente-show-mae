@@ -2,7 +2,7 @@
 <html lang="pt-BR">
 <head>
     <meta charset="UTF-8" />
-    <title>Um Segredo Para Você</title>
+    <title>Uma Jornada de Memórias</title>
     <link rel="stylesheet" href="style.css" />
 </head>
 <body>
@@ -10,35 +10,70 @@
 
         <!-- Etapa 1 -->
         <div id="etapa1">
-            <h1>Nem todas as histórias precisam ser contadas de uma vez só...</h1>
-            <button onclick="irParaEtapa2()">Continuar</button>
+            <h1>Nem toda história precisa ser contada de uma vez só...</h1>
+            <p>Mas algumas merecem ser vividas, presencialmente.</p>
+            <button onclick="irParaEtapa2()">Começar a Jornada</button>
         </div>
 
         <!-- Etapa 2 -->
         <div id="etapa2" class="hidden">
-            <p>Tem coisas que só a gente entende...<br>
-            Músicas, risadas, cafés da tarde...<br>
-            Momentos que marcaram.</p>
-            <button onclick="irParaEtapa3()">Quero saber mais</button>
+            <p>Por onde você quer começar?</p>
+            <button onclick="irParaEtapa3()">Uma lembrança</button>
+            <button onclick="irParaEtapa3()">Um sentimento</button>
+            <button onclick="irParaEtapa3()">Uma música</button>
         </div>
 
         <!-- Etapa 3 -->
         <div id="etapa3" class="hidden">
-            <p>Prepare-se para reviver algo que sempre fez parte da nossa história...<br>
-            E dessa vez, ao vivo.</p>
-            <button onclick="mostrarSurpresa()">Revelar o Presente</button>
+            <p>Agora preciso que você faça uma coisa importante:</p>
+            <p><strong>Aumente o volume...</strong></p>
+            <p>Porque o que vem agora... merece ser ouvido.</p>
+            <button onclick="irParaEtapa4()">Já aumentei, pode continuar</button>
         </div>
 
-        <!-- Etapa 4 - Surpresa -->
+        <!-- Etapa 4 -->
+        <div id="etapa4" class="hidden">
+            <p>Enquanto essa música toca...</p>
+            <p>Quero que você pense naqueles dias em que a gente cantava juntas, com as músicas tocando naquele nosso DVD já bem velhinho...</p>
+            <p>Nas vezes que essa banda fez trilha sonora nas nossas faxinas ou viagens de carro...</p>
+            <p>E naquele refrão que diz:</p>
+            <p><em>"Você vai lembrar de mim..."</em></p>
+            <button onclick="irParaEtapa5()">Lembrei... pode seguir</button>
+        </div>
+
+        <!-- Etapa 5 -->
+        <div id="etapa5" class="hidden">
+            <p>Chegou a hora de criar uma nova lembrança...</p>
+            <p>Só que dessa vez... ao vivo... na nossa frente... juntas.</p>
+            <button onclick="irParaEtapa6()">Eu quero saber o que é!</button>
+        </div>
+
+        <!-- Etapa 6 -->
+        <div id="etapa6" class="hidden">
+            <p>Tem certeza que está pronta?</p>
+            <p>Depois do próximo clique... não tem mais volta.</p>
+            <button onclick="mostrarSurpresa()">Revelar agora!</button>
+        </div>
+
+        <!-- Etapa 7 - Surpresa -->
         <div id="surpresa" class="hidden" style="margin-top: 30px;">
             <h2>Você vai ao show do Nenhum de Nós comigo! 🎶✨</h2>
-            <p>Data: 16/08/2025</p>
-            <p>Local: TEATRO CRICIÚMA ELIAS ANGELONI, Criciúma/ SC</p>
-            <p>Prepare-se para uma noite inesquecível!</p>
+            <p><strong>Local:</strong> TEATRO CRICIÚMA ELIAS ANGELONI, Criciúma/SC</p>
+            <p><strong>Data:</strong> 16/08/2025</p>
+            <p>E quando tocar... <strong>"Você vai lembrar de mim"</strong>...  
+            A gente vai cantar junto.</p>
+            <button onclick="mostrarMensagemFinal()">❤️</button>
         </div>
+
+        <!-- Etapa 8 - Mensagem Final -->
+        <div id="final" class="hidden" style="margin-top: 30px;">
+            <h2>Te amo ❤️</h2>
+            <p>Esse é só mais um capítulo da nossa história com música.</p>
+        </div>
+
     </div>
 
-    <audio id="musica" autoplay loop>
+    <audio id="musica" loop>
         <source src="musica.mp3" type="audio/mpeg" />
         Seu navegador não suporta áudio.
     </audio>
@@ -47,19 +82,37 @@
         function irParaEtapa2() {
             document.getElementById('etapa1').classList.add('hidden');
             document.getElementById('etapa2').classList.remove('hidden');
-            tocarMusica();
         }
 
         function irParaEtapa3() {
             document.getElementById('etapa2').classList.add('hidden');
             document.getElementById('etapa3').classList.remove('hidden');
+        }
+
+        function irParaEtapa4() {
+            document.getElementById('etapa3').classList.add('hidden');
+            document.getElementById('etapa4').classList.remove('hidden');
             tocarMusica();
         }
 
+        function irParaEtapa5() {
+            document.getElementById('etapa4').classList.add('hidden');
+            document.getElementById('etapa5').classList.remove('hidden');
+        }
+
+        function irParaEtapa6() {
+            document.getElementById('etapa5').classList.add('hidden');
+            document.getElementById('etapa6').classList.remove('hidden');
+        }
+
         function mostrarSurpresa() {
-            document.getElementById('etapa3').classList.add('hidden');
+            document.getElementById('etapa6').classList.add('hidden');
             document.getElementById('surpresa').classList.remove('hidden');
-            tocarMusica();
+        }
+
+        function mostrarMensagemFinal() {
+            document.getElementById('surpresa').classList.add('hidden');
+            document.getElementById('final').classList.remove('hidden');
         }
 
         function tocarMusica() {
@@ -71,3 +124,4 @@
     </script>
 </body>
 </html>
+

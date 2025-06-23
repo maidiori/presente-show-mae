@@ -3,7 +3,7 @@ body {
     color: #e0dede;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
-    padding: 50px 20px;
+    padding: 40px 20px;
     min-height: 100vh;
     display: flex;
     justify-content: center;
@@ -11,38 +11,39 @@ body {
 }
 
 .container {
-    max-width: 500px;
-    background: #1e1e1ecc;
-    padding: 30px 25px;
+    max-width: 600px;
+    background: #1e1e1e;
+    padding: 30px 20px;
     border-radius: 15px;
     box-shadow: 0 0 20px #8a2be2cc;
 }
 
 h1, h2 {
-    font-size: 2rem;
-    letter-spacing: 1px;
+    font-size: 2.2rem;
     margin-bottom: 20px;
     color: #bb86fc;
+    letter-spacing: 1px;
 }
 
 p {
-    font-size: 1.2rem;
+    font-size: 1.3rem;
     margin-bottom: 25px;
-    line-height: 1.5;
+    line-height: 1.6;
     color: #ddd;
 }
 
 button {
     background-color: #bb86fc;
     border: none;
-    padding: 12px 25px;
-    border-radius: 10px;
-    font-size: 1.1rem;
+    padding: 16px 30px;
+    border-radius: 12px;
+    font-size: 1.2rem;
     color: #121212;
     cursor: pointer;
     transition: background-color 0.3s ease, transform 0.2s ease;
     font-weight: 600;
-    letter-spacing: 1px;
+    margin-top: 10px;
+    display: inline-block;
 }
 
 button:hover {
@@ -58,21 +59,21 @@ button:hover {
     body {
         padding: 20px 10px;
     }
-    
+
     .container {
-        padding: 20px 15px;
+        padding: 25px 15px;
     }
 
     h1, h2 {
-        font-size: 1.6rem;
+        font-size: 1.8rem;
     }
 
     p {
-        font-size: 1rem;
+        font-size: 1.1rem;
     }
 
     button {
-        font-size: 1rem;
-        padding: 10px 20px;
+        font-size: 1.1rem;
+        padding: 14px 25px;
     }
 }
