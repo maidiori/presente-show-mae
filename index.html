@@ -1,29 +1,4 @@
-<!DOCTYPE html>
-<html lang="pt-BR">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Presente Surpresa - Nenhum de Nós</title>
-  <link rel="stylesheet" href="style.css" />
-</head>
-<body>
-  <div id="container">
-    <h1>Uma Surpresa pra Você, Mãe</h1>
-    <div id="text" class="fade-in">
-      <p>Mãe…<br>
-      Hoje, quero te presentear.<br>
-      Se eu pudesse, te daria o mundo…<br>
-      O mundo das melhores coisas da vida…<br>
-      Porque você sempre foi o meu mundo de coisas boas.<br>
-      Sou eternamente grata por tudo o que você sempre me deu…<br>
-      Inclusive aquilo que, muitas vezes, você não podia, mas dava um jeito de fazer acontecer.</p>
-    </div>
-    <button id="nextBtn">Me conta, filha ❤️</button>
-  </div>
-
-  <audio id="music" src="musica.mp3" preload="auto"></audio>
-
-  <script>
+<script>
     const etapas = [
       {
         text: `Mãe…\nHoje, quero te presentear.\nSe eu pudesse, te daria o mundo…\nO mundo das melhores coisas da vida…\nPorque você sempre foi o meu mundo de coisas boas.\nSou eternamente grata por tudo o que você sempre me deu…\nInclusive aquilo que, muitas vezes, você não podia, mas dava um jeito de fazer acontecer.`,
@@ -59,12 +34,13 @@
         button: ""
       }
     ];
-
+  
     let etapaAtual = 0;
     const textEl = document.getElementById("text");
     const btn = document.getElementById("nextBtn");
     const music = document.getElementById("music");
-
+    let musicPlaying = false;
+  
     function mostrarEtapa(num) {
       const etapa = etapas[num];
       textEl.classList.remove('fade-in');
@@ -77,30 +53,28 @@
         textEl.appendChild(p);
       });
       textEl.classList.add('fade-in');
-
+  
       if (etapa.button) {
         btn.textContent = etapa.button;
         btn.style.display = 'inline-block';
       } else {
         btn.style.display = 'none';
       }
-
-      if (etapa.playMusic) {
-        music.volume = 0.25;
+  
+      // Começa a música na etapa 4 (índice 3) e continua tocando nas seguintes
+      if (etapa.playMusic && !musicPlaying) {
+        music.volume = 0.3;
         music.play();
-      } else {
-        music.pause();
-        music.currentTime = 0;
+        musicPlaying = true;
       }
     }
-
+  
     btn.addEventListener("click", () => {
       etapaAtual++;
       if (etapaAtual >= etapas.length) return;
       mostrarEtapa(etapaAtual);
     });
-
+  
     mostrarEtapa(etapaAtual);
   </script>
-</body>
-</html>
+  
