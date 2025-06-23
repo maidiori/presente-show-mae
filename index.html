@@ -1,127 +1,106 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-    <meta charset="UTF-8" />
-    <title>Uma Jornada de Memórias</title>
-    <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Presente Surpresa - Nenhum de Nós</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-    <div class="container">
-
-        <!-- Etapa 1 -->
-        <div id="etapa1">
-            <h1>Nem toda história precisa ser contada de uma vez só...</h1>
-            <p>Mas algumas merecem ser vividas, presencialmente.</p>
-            <button onclick="irParaEtapa2()">Começar a Jornada</button>
-        </div>
-
-        <!-- Etapa 2 -->
-        <div id="etapa2" class="hidden">
-            <p>Por onde você quer começar?</p>
-            <button onclick="irParaEtapa3()">Uma lembrança</button>
-            <button onclick="irParaEtapa3()">Um sentimento</button>
-            <button onclick="irParaEtapa3()">Uma música</button>
-        </div>
-
-        <!-- Etapa 3 -->
-        <div id="etapa3" class="hidden">
-            <p>Agora preciso que você faça uma coisa importante:</p>
-            <p><strong>Aumente o volume...</strong></p>
-            <p>Porque o que vem agora... merece ser ouvido.</p>
-            <button onclick="irParaEtapa4()">Já aumentei, pode continuar</button>
-        </div>
-
-        <!-- Etapa 4 -->
-        <div id="etapa4" class="hidden">
-            <p>Enquanto essa música toca...</p>
-            <p>Quero que você pense naqueles dias em que a gente cantava juntas, com as músicas tocando naquele nosso DVD já bem velhinho...</p>
-            <p>Nas vezes que essa banda fez trilha sonora nas nossas faxinas ou viagens de carro...</p>
-            <p>E naquele refrão que diz:</p>
-            <p><em>"Você vai lembrar de mim..."</em></p>
-            <button onclick="irParaEtapa5()">Lembrei... pode seguir</button>
-        </div>
-
-        <!-- Etapa 5 -->
-        <div id="etapa5" class="hidden">
-            <p>Chegou a hora de criar uma nova lembrança...</p>
-            <p>Só que dessa vez... ao vivo... na nossa frente... juntas.</p>
-            <button onclick="irParaEtapa6()">Eu quero saber o que é!</button>
-        </div>
-
-        <!-- Etapa 6 -->
-        <div id="etapa6" class="hidden">
-            <p>Tem certeza que está pronta?</p>
-            <p>Depois do próximo clique... não tem mais volta.</p>
-            <button onclick="mostrarSurpresa()">Revelar agora!</button>
-        </div>
-
-        <!-- Etapa 7 - Surpresa -->
-        <div id="surpresa" class="hidden" style="margin-top: 30px;">
-            <h2>Você vai ao show do Nenhum de Nós comigo! 🎶✨</h2>
-            <p><strong>Local:</strong> TEATRO CRICIÚMA ELIAS ANGELONI, Criciúma/SC</p>
-            <p><strong>Data:</strong> 16/08/2025</p>
-            <p>E quando tocar... <strong>"Você vai lembrar de mim"</strong>...  
-            A gente vai cantar junto.</p>
-            <button onclick="mostrarMensagemFinal()">❤️</button>
-        </div>
-
-        <!-- Etapa 8 - Mensagem Final -->
-        <div id="final" class="hidden" style="margin-top: 30px;">
-            <h2>Te amo ❤️</h2>
-            <p>Esse é só mais um capítulo da nossa história com música.</p>
-        </div>
-
+  <div id="container">
+    <h1>Uma Surpresa pra Você, Mãe</h1>
+    <div id="text" class="fade-in">
+      <p>Mãe…<br>
+      Hoje, quero te presentear.<br>
+      Se eu pudesse, te daria o mundo…<br>
+      O mundo das melhores coisas da vida…<br>
+      Porque você sempre foi o meu mundo de coisas boas.<br>
+      Sou eternamente grata por tudo o que você sempre me deu…<br>
+      Inclusive aquilo que, muitas vezes, você não podia, mas dava um jeito de fazer acontecer.</p>
     </div>
+    <button id="nextBtn">Me conta, filha ❤️</button>
+  </div>
 
-    <audio id="musica" loop>
-        <source src="musica.mp3" type="audio/mpeg" />
-        Seu navegador não suporta áudio.
-    </audio>
+  <audio id="music" src="musica.mp3" preload="auto"></audio>
 
-    <script>
-        function irParaEtapa2() {
-            document.getElementById('etapa1').classList.add('hidden');
-            document.getElementById('etapa2').classList.remove('hidden');
-        }
+  <script>
+    const etapas = [
+      {
+        text: `Mãe…\nHoje, quero te presentear.\nSe eu pudesse, te daria o mundo…\nO mundo das melhores coisas da vida…\nPorque você sempre foi o meu mundo de coisas boas.\nSou eternamente grata por tudo o que você sempre me deu…\nInclusive aquilo que, muitas vezes, você não podia, mas dava um jeito de fazer acontecer.`,
+        button: "Me conta, filha ❤️"
+      },
+      {
+        text: `Mas…\nSe teve uma coisa que sempre fez parte dos nossos momentos juntas, foi uma boa trilha sonora…\nPor muito tempo foi aquele DVD velho…\nDurante faxinas de sábado…\nAquelas idas e vindas de carro pra Criciúma…\nE as músicas que tocavam no fundo…\nEnquanto a gente seguia com a vida.`,
+        button: "Tô ligada…"
+      },
+      {
+        text: `E entre uma louça lavada e um chão varrido…\nTinha sempre uma música que a gente acabava cantando…\nNem que fosse só o refrão…\n(Com aquela nossa afinação… questionável 😂)\n'Sabe… você vai lembrar de mim…'`,
+        button: "Socorro kkkk, lembro mesmo"
+      },
+      {
+        text: `Agora…\nAntes de continuar…\n👉 Faz um favor?\n👉 Sobe o volume do celular…\nPorque o que vem a seguir…\nMerece trilha sonora.`,
+        button: "Pronto, pode seguir!",
+        playMusic: true
+      },
+      {
+        text: `Chegou a hora de criar uma nova lembrança...\nSó que dessa vez...\nAo vivo...\nNa nossa frente...\nJuntas.`,
+        button: "Eu quero saber o que é!"
+      },
+      {
+        text: `Então… chegou o dia.\nPrepare-se…\nDepois do próximo clique…\nNada mais será como antes (só que melhor) ❤️`,
+        button: "Revela logo!"
+      },
+      {
+        text: `🎉 Você vai ao show do Nenhum de Nós comigo! 🎶✨\n\n📍 Local: TEATRO CRICIÚMA ELIAS ANGELONI, Criciúma/SC\n📅 Data: 16/08/2025\n\nPois é…\nQuem diria né?\nDessa vez…\nNada de faxina…\nNada de DVD…\nNada de som de fundo…\nAgora vai ser ao vivo…\nCom luz, palco, banda…\nE a gente…\nCantando (ou gritando) juntas…\nE criando mais um capítulo da nossa história com música.`,
+        button: "❤️"
+      },
+      {
+        text: `Mãe…\nEu te amo mais que tudo nessa vida…\nE mesmo sendo algo simples e simbólico…\nTenho certeza…\nQue será uma recordação que vamos levar…\nPra sempre…\nJuntas…\nNo nosso repertório de momentos inesquecíveis.`,
+        button: ""
+      }
+    ];
 
-        function irParaEtapa3() {
-            document.getElementById('etapa2').classList.add('hidden');
-            document.getElementById('etapa3').classList.remove('hidden');
-        }
+    let etapaAtual = 0;
+    const textEl = document.getElementById("text");
+    const btn = document.getElementById("nextBtn");
+    const music = document.getElementById("music");
 
-        function irParaEtapa4() {
-            document.getElementById('etapa3').classList.add('hidden');
-            document.getElementById('etapa4').classList.remove('hidden');
-            tocarMusica();
-        }
+    function mostrarEtapa(num) {
+      const etapa = etapas[num];
+      textEl.classList.remove('fade-in');
+      void textEl.offsetWidth; // restart animation
+      textEl.innerHTML = '';
+      const linhas = etapa.text.split('\n');
+      linhas.forEach(linha => {
+        const p = document.createElement('p');
+        p.textContent = linha;
+        textEl.appendChild(p);
+      });
+      textEl.classList.add('fade-in');
 
-        function irParaEtapa5() {
-            document.getElementById('etapa4').classList.add('hidden');
-            document.getElementById('etapa5').classList.remove('hidden');
-        }
+      if (etapa.button) {
+        btn.textContent = etapa.button;
+        btn.style.display = 'inline-block';
+      } else {
+        btn.style.display = 'none';
+      }
 
-        function irParaEtapa6() {
-            document.getElementById('etapa5').classList.add('hidden');
-            document.getElementById('etapa6').classList.remove('hidden');
-        }
+      if (etapa.playMusic) {
+        music.volume = 0.25;
+        music.play();
+      } else {
+        music.pause();
+        music.currentTime = 0;
+      }
+    }
 
-        function mostrarSurpresa() {
-            document.getElementById('etapa6').classList.add('hidden');
-            document.getElementById('surpresa').classList.remove('hidden');
-        }
+    btn.addEventListener("click", () => {
+      etapaAtual++;
+      if (etapaAtual >= etapas.length) return;
+      mostrarEtapa(etapaAtual);
+    });
 
-        function mostrarMensagemFinal() {
-            document.getElementById('surpresa').classList.add('hidden');
-            document.getElementById('final').classList.remove('hidden');
-        }
-
-        function tocarMusica() {
-            const audio = document.getElementById('musica');
-            if (audio.paused) {
-                audio.play();
-            }
-        }
-    </script>
+    mostrarEtapa(etapaAtual);
+  </script>
 </body>
 </html>
-
